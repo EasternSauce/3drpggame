@@ -61,9 +61,9 @@ public class DummyGame implements IGameLogic {
 
     private GameItem[] gameItems;
     
-    private Vector2f lookAt = new Vector2f(0.0f, 0.0f);
+    private Vector2f lookAt = new Vector2f(25.0f, 190.0f);
     
-    private float camDistance = 2.0f;
+    private float camDistance = 6.0f;
 
     private float previousScroll = 0.0f;
     
@@ -111,14 +111,14 @@ public class DummyGame implements IGameLogic {
 
         // Fog
         Vector3f fogColour = new Vector3f(0.5f, 0.5f, 0.5f);
-        scene.setFog(new Fog(true, fogColour, 0.02f));
+        //scene.setFog(new Fog(true, fogColour, 0.02f));
 
         // Setup  SkyBox
         float skyBoxScale = 100.0f;
         fileName = Thread.currentThread().getContextClassLoader()
-                .getResource("models/skybox.obj").getFile();
+                .getResource("models/skybox/skybox.obj").getFile();
         file = new File(fileName);
-        SkyBox skyBox = new SkyBox(file.getAbsolutePath(), new Vector4f(0.65f, 0.65f, 0.65f, 1.0f));
+        SkyBox skyBox = new SkyBox(file.getAbsolutePath(), "/models/skybox/skybox.png");
         skyBox.setScale(skyBoxScale);
         scene.setSkyBox(skyBox);
 
