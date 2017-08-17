@@ -67,22 +67,21 @@ public class GameItem {
     }
     
     public void movePosition(float offsetX, float offsetY, float offsetZ) {
-    	//Vector3f euler = rotation.getEulerAnglesXYZ(new Vector3f());
-    	//euler.y += Math.PI / 2;
-    	//System.out.println(euler.y);
-//        if ( offsetZ != 0 ) {
-//            position.x += (float)Math.sin(angle) * -1.0f * offsetZ;
-//            position.z += (float)Math.cos(angle) * offsetZ;
-//        }
-//        if ( offsetX != 0) {
-//            position.x += (float)Math.sin(angle - 90) * -1.0f * offsetX;
-//            position.z += (float)Math.cos(angle - 90) * offsetX;
-//        }
-//        position.y += offsetY;
-        
         this.position.x += offsetX;
         this.position.y += offsetY;
         this.position.z += offsetZ;
+    }
+    
+    public void movePositionX(float offsetX) {
+    	this.position.x += offsetX;
+    }
+
+    public void movePositionY(float offsetY) {
+    	this.position.y += offsetY;
+    }
+    
+    public void movePositionZ(float offsetZ) {
+    	this.position.z += offsetZ;
     }
 
     public float getScale() {

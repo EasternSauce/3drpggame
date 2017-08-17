@@ -205,28 +205,25 @@ public class DummyGame implements IGameLogic {
         if (mouseInput.isRightButtonPressed()) {
             // Update camera based on mouse            
             Vector2f rotVec = mouseInput.getDisplVec();
-            //camera.moveRotation(rotVec.x * MOUSE_SENSITIVITY, rotVec.y * MOUSE_SENSITIVITY, 0);
             //sceneChanged = true;
             lookAt.x +=rotVec.x * MOUSE_SENSITIVITY;
             lookAt.y +=rotVec.y * MOUSE_SENSITIVITY;
         }
 
         // Update camera position
-        //System.out.println((float)Math.cos(Math.toRadians(lookAt.y)));
         if(animItem.getPosition().y + animItem.getVerticalVelocity() < 0.0f) {
         	animItem.setPosition(animItem.getPosition().x, 0.0f, animItem.getPosition().z);
         	animItem.setVerticalVelocity(0.0f);
         }
         
         if(animItem.getVerticalVelocity() != 0.0f) {
-        	animItem.movePosition(0.0f, animItem.getVerticalVelocity(), 0.0f);
+        	animItem.movePositionY(animItem.getVerticalVelocity());
             animItem.setVerticalVelocity(animItem.getVerticalVelocity() + animItem.getVerticalAccel());
         }
 
         animItem.movePosition(posInc.z * CAMERA_POS_STEP * (float)Math.cos(Math.toRadians(lookAt.y)) + posInc.x * CAMERA_POS_STEP * (float)Math.cos(Math.toRadians(-lookAt.y + 90.0f)), 
         		posInc.y * CAMERA_POS_STEP,
         		posInc.z * CAMERA_POS_STEP * (float)Math.sin(Math.toRadians(lookAt.y)) + posInc.x * CAMERA_POS_STEP * (float)Math.sin(Math.toRadians(lookAt.y - 90.0f)));
-        //camera.setPosition(animItem.getPosition().x, animItem.getPosition().y, animItem.getPosition().z);
         
         camera.setPosition(animItem.getPosition().x + camDistance * (float)Math.cos(Math.toRadians(lookAt.y)) * (float)Math.cos(Math.toRadians(lookAt.x)), 1.5f + animItem.getPosition().y + camDistance * (float)Math.sin(Math.toRadians(lookAt.x)), animItem.getPosition().z + camDistance * (float)Math.sin(Math.toRadians(lookAt.y)) * (float)Math.cos(Math.toRadians(lookAt.x)));
         camera.setRotation(lookAt.x, 90.0f + lookAt.y + 180.0f, 0.0f);
