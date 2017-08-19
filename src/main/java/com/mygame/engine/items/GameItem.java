@@ -164,7 +164,7 @@ public class GameItem {
 	}
 	
 	public void jump() {
-		if(position.y <= 0.0f) {
+		if(verticalVelocity == 0.0f) {
 			this.verticalVelocity = 1.3f;
 
 		}

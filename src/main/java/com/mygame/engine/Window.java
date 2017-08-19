@@ -70,7 +70,7 @@ public class Window {
     /**
      * Distance to the far plane
      */
-    public static final float Z_FAR = 1000.f;
+    public static final float Z_FAR = 3000.f;
 
     private final String title;
 
